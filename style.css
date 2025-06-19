@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "LXGW WenKai Mono TC", monospace;
+}
+
+
+body {
+    background-color: aqua;
+}
+
+.mainCont {
+    padding: 15px 20px;    
+}
+
+.mainCont > h1 {
+    text-align: center;
+}
+
+.addBookCont {
+    display: flex;
+    justify-content: end;
+}
+
+.addBookBtn {
+    background-color: rgb(2, 139, 139);
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.addBookBtn:hover {
+    background-color: rgb(9, 115, 115);
+}
+
+.noBooksCont {
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 30px;
+}
+
+.noBooksCont p {
+    margin-bottom: 15px;
+}
+
+.booksCont {
+    padding: 20px 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 18rem));
+    gap: 20px;
+    justify-content: center;
+}
+
+.booksCont .card {
+    background-color: white;
+    padding: 10px 20px;    
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    max-width: 300px;
+    overflow: auto;
+    transition: 0.2s;
+}
+
+.booksCont .card:hover {
+    transform: scale(1.02);
+}
+
+.deleteBtn {
+    background-color: red;
+    color: white;
+    padding: 6px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.deleteBtn:hover {
+    background-color: rgb(238, 5, 5);
+}
+
+#addBookDialog {
+    left: 38%;
+    top: 25%;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+#addBookDialog h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#addBookDialog form { 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addBookDialog form p {
+    display: flex;
+    gap: 15px;
+}
+
+#addBookDialog form p label:not(:last-child) {
+    width: 6rem;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 3px 6px;    
+}
+
+.readToggleCont {
+    display: inline-block;
+    position: relative;
+}
+
+.readToggleCont input {
+    appearance: none;
+    width: 0;
+    height: 0;
+    padding: 0;
+}
+
+.readToggleCont .slider {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.readToggleCont .slider::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 18px;
+    left: 3px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.readToggleCont input:checked + .slider {
+    background-color: orange;
+}
+
+.readToggleCont input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+.round {
+    border-radius: 50px;
+}
+
+#addBookDialog form .btnsCont {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+#addBookDialog form .btnsCont button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#addBookDialog form .btnsCont button:first-child {
+    background-color: rgb(170, 166, 166);
+}
+
+#addBookDialog form .btnsCont button:first-child:hover {
+    background-color: gray;
+}
+
+#addBookDialog form .btnsCont button:last-child {
+    background-color: rgb(4, 152, 4);
+}
+
+#addBookDialog form .btnsCont button:last-child:hover {
+    background-color: green;
+}
+
+#addBookDialog:open {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+#addBookDialog {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: all 0.4s allow-discrete;
+}
+
+@starting-style {
+    #addBookDialog:open {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+}
+
+#addBookDialog::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+    transition: all 0.4s allow-discrete;
+}
+
+#addBookDialog:open::backdrop {
+    background-color: rgb(0 0 0 / 25%);
+}
+
+@starting-style {
+    #addBookDialog:open::backdrop {
+      background-color: rgb(0 0 0 / 0%);
+    }
+}
